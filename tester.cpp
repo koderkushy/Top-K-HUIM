@@ -1,4 +1,6 @@
 #include <bits/stdc++.h>
+#include <stdlib.h>
+
 using namespace std;
 
 #include "Parse_spmf.h"
@@ -6,7 +8,23 @@ using namespace std;
 #include "BinarySearch_EFIM.h"
 
 
-int main(int argc, char** argv){
+void perform (int k) {
+
+
+
+}
+
+int time_since_last () {
+    static auto last = chrono::high_resolution_clock::now();
+
+    auto now = chrono::high_resolution_clock::now();
+    int dur = chrono::duration_cast<chrono::milliseconds>(now - last).count();
+    last = now;
+
+    return dur;
+}
+
+int main(){
 
 
     string path ="datasets\\RNG\\random_1.txt";
