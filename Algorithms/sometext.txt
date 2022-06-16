@@ -1,0 +1,6 @@
+cli build command - 
+pyinstaller -F CLI.py --add-binary="C:\Users\Kushagra\Desktop\projects\TKEH\proper\algorithms\interface\interface.so;." --clean -n="huim" 
+
+fruithut - 27 MB
+ecommerce - 7 MB
+chicago - 262 MB
