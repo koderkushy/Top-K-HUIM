@@ -44,6 +44,9 @@ The above repo contains C++ implementations of the above ideas and a comparison 
 I have also created a standalone executable ([huim.exe](https://github.com/koderkushy/Top-K-High-Utility-Itemset-Mining/tree/main/Algorithms/interface)) to run the algorithms on spmf-formatted datasets via the command line conveniently.
 
 ## Results
+
+The following running times were achieved on a Windows 11 computer, running on an AMD Ryzen 4500U processor with 6 physical cores and 8 GiB of RAM. The implementations are single threaded however some parts can be parallelized by adding relevant standard execution policies defined in the algorithm library.
+
 ![fruithut_all](https://user-images.githubusercontent.com/76262561/174132660-8a936492-7b55-443e-b018-198b40fbc854.png)
 
 ![mushroom_all](https://user-images.githubusercontent.com/76262561/174132663-7d6edd72-467c-4ae2-a3ea-09472af24c83.png)
