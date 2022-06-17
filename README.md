@@ -1,4 +1,4 @@
-# Top K High Utility Itemset Mining
+# Top K High Utility Itemsets Mining
 Understanding and implementing the EFIM algorithm to solve the top-K HUIM problem.
 
 ## Problem definition
