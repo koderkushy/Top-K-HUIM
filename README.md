@@ -45,25 +45,50 @@ I have also created a standalone executable ([huim.exe](https://github.com/koder
 
 ## Results
 
-The following running times were achieved on a Windows 11 computer, running on an AMD Ryzen 4500U processor with 6 physical cores and 8 GiB of RAM. The implementations are single threaded however some parts can be parallelized by adding relevant standard execution policies defined in the algorithm library.
+Execution times of both algorithms on the following datasets were recorded and plotted. They were also compared with the [TKU algorithm](https://www.philippe-fournier-viger.com/spmf/TKDE_TKO.pdf) (Tseng et al., 2015) on two datasets (because it was too slow on the others).
 
-![fruithut_all](https://user-images.githubusercontent.com/76262561/174132660-8a936492-7b55-443e-b018-198b40fbc854.png)
+The following running times were achieved on a Windows 11 computer, running on an AMD Ryzen 4500U processor with 6 physical cores and 8 GiB of RAM. The implementations are single threaded however some parts can be parallelized by adding relevant standard execution policies defined in the C++ standard library.
+<details>
+  <summary>Chicago crimes</summary>
+  <img src="https://user-images.githubusercontent.com/76262561/174738071-da2db46c-2766-4b87-8af4-39bf8a510234.png">
+</details>
 
-![mushroom_all](https://user-images.githubusercontent.com/76262561/174132663-7d6edd72-467c-4ae2-a3ea-09472af24c83.png)
+<details>
+  <summary>Ecommerce retail</summary>
+  <img src="https://user-images.githubusercontent.com/76262561/174132673-d32b3797-b02b-49b8-ab82-fa9dfc3da39a.png">
+</details>
 
-![chicago_all](https://user-images.githubusercontent.com/76262561/174132670-f393c7fe-5ed8-4338-af5f-c5e00b72b8dd.png)
+<details>
+  <summary>Foodmart (with TKU)</summary>
+  <img src="https://user-images.githubusercontent.com/76262561/174738741-7daf9439-af8a-460d-9efa-76af5d8bf947.png"> <img src="https://user-images.githubusercontent.com/76262561/174739250-199484cd-f148-416c-a382-5ea0d56cb572.png">
+</details>
 
-![ecommerce_all](https://user-images.githubusercontent.com/76262561/174132673-d32b3797-b02b-49b8-ab82-fa9dfc3da39a.png)
+<details>
+  <summary>Fruithut</summary>
+  <img src="https://user-images.githubusercontent.com/76262561/174738875-de3b0fac-41d4-4188-87b6-f9146a839d43.png">
+</details>
 
-![foodmart_all](https://user-images.githubusercontent.com/76262561/174132675-eeeaf8e9-c18a-4db2-8c65-8098d065923b.png)
+<details>
+  <summary>Mushroom (with TKU)</summary>
+  <img src="https://user-images.githubusercontent.com/76262561/174739075-d5d6685f-b10c-4c03-a34c-a641eccba647.png"> <img src="https://user-images.githubusercontent.com/76262561/174739276-91adb5b4-d2dd-46fc-af65-05a6758075a1.png">
+</details>
 
 ### The following are randomly generated databases
 
-![random_1_all](https://user-images.githubusercontent.com/76262561/174132665-d69559cb-b43f-4d20-afb0-674a62f14e65.png)
+<details>
+  <summary>Random 1</summary>
+  <img src="https://user-images.githubusercontent.com/76262561/174132665-d69559cb-b43f-4d20-afb0-674a62f14e65.png">
+</details>
 
-![random_2_all](https://user-images.githubusercontent.com/76262561/174132668-d588536e-a634-4a9c-b411-0fd37bddf1f2.png)
+<details>
+  <summary>Random 2</summary>
+  <img src="https://user-images.githubusercontent.com/76262561/174132668-d588536e-a634-4a9c-b411-0fd37bddf1f2.png">
+</details>
+
 
 ## Conclusions
-The priority queue version has an almost uniform running time (initially outdone by the binary search version in some cases) hardly wavering even on the logarithmic axis which is quite promising.
 
-The binary search version however has several complications. The execution time depends on how fast the algorithm narrows down to a sweet threshold value.
+- Both versions vastly outperform the [TKU algorithm](https://www.philippe-fournier-viger.com/spmf/TKDE_TKO.pdf) (Tseng et al., 2015).
+- The priority queue version has an almost uniform running time hardly wavering even on the logarithmic scale which is quite promising if we're looking to mine a larger number of itemsets.
+- The binary search version however does not have a very monotonic performance. Since the maximum utility estimate is usually way beyond the actually maximum utility value, it plays a crucial role in determining how many iterations the algorithm takes before reaching meaningful minimum utility thresholds. Thereafter, the number of iterations it takes to close in on the sweet region varies discretely with the values of $K$. Thus, in some cases (like those of Ecommerce retail, Foodmart, Mushroom, Random 1&2) there are regions where the run time decreases with $K$.
+- The binary search version outperforms the priority queue version on relatively smaller values of $K$, which are practically more meaningful.
