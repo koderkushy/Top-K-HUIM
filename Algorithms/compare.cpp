@@ -22,14 +22,18 @@ int main(int argc, char** argv){
     for (int j = 0; j < 3; j++) {
     	for (int k: k_arr[j]) {
     		auto s = chrono::high_resolution_clock::now();
-    		PQ_EFIM<int>(path, k, spmf_parse);
+    		// PQ_EFIM<int>(path, k, spmf_parse);
+            string command = "java -jar spmf.jar run TKU foodmart.txt ot.txt " + to_string(k);
+            system(command.c_str());
     		auto e = chrono::high_resolution_clock::now();
     		times[0][j].emplace_back(chrono::duration_cast<chrono::milliseconds>(e - s).count());
 
-    		s = chrono::high_resolution_clock::now();
-    		BS_EFIM<int>(path, k, spmf_parse);
-    		e = chrono::high_resolution_clock::now();
-    		times[1][j].emplace_back(chrono::duration_cast<chrono::milliseconds>(e - s).count());
+    		// s = chrono::high_resolution_clock::now();
+    		// BS_EFIM<int>(path, k, spmf_parse);
+    		// e = chrono::high_resolution_clock::now();
+    		// times[1][j].emplace_back(chrono::duration_cast<chrono::milliseconds>(e - s).count());
+
+
     	}
     }
 
