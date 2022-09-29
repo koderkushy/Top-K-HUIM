@@ -32,12 +32,6 @@ Rather than having a fixed minimum utility threshold, we start with $min \textun
 ### Binary search version
 We binary search on the minimum utility threshold. Simple as it sounds, we start with an interesting range $\[0, max \textunderscore util \textunderscore estimate\]$ and continually halve it by counting the number of HUIs with respect to the median utility threshold using a straightforward run of the EFIM algorithm. However, a naive binary search is rather slow because it takes around $10$ iterations of the costly search method to reduce a range of size $1000$, where we can rather just retrieve the few excess itemsets and delete them later by sorting.
 
-<details>
-  
-  <summary>Few ideas for the future</summary>
-  
-  The sweet range, $[K, cap(K)]$ could be made dynamic so that as time progresses, the algorithm gets desperate to quit with even a huge number of itemsets. The exact definition of such a time-varying $cap$ function that yields good results requires the knowledge of several properties of the database, such as the distribution of itemsets with respect to utility.
-</details>
 
 The above repo contains C++ implementations of the above ideas and a comparison of their running times on several datasets available at the [SPMF open source library](https://www.philippe-fournier-viger.com/spmf/index.php?link=datasets.php)
 
